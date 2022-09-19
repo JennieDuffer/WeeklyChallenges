@@ -31,27 +31,69 @@ namespace ChallengesWithTestsMark8
 
         public bool CouldFormTriangle(int sideLength1, int sideLength2, int sideLength3)
         {
-            throw new NotImplementedException();
+            return (sideLength1 + sideLength2 > sideLength3 &&
+                    sideLength2 + sideLength3 > sideLength1 &&
+                    sideLength1 + sideLength3 > sideLength2);
+                
         }
 
         public bool IsStringANumber(string input)
         {
-            throw new NotImplementedException();
-        }
+            
+            var isNumber = double.TryParse(input, out var number);
+            return isNumber;
+       
 
+        }
         public bool MajorityOfElementsInArrayAreNull(object[] objs)
         {
-            throw new NotImplementedException();
+           return objs.Where(x => x == null).Count() > (objs.Count() / 2);  
         }
 
         public double AverageEvens(int[] numbers)
         {
-            throw new NotImplementedException();
+            double sum = 0;
+            double count = 0;
+
+            if (numbers == null)
+            {
+                return 0;
+            }
+
+            foreach (var num in numbers)
+            {
+                if (num % 2 == 0)
+                {
+                    sum += num;
+                    count++;
+                }
+            }
+
+            if (count > 0)
+            {
+                return sum / count;
+            }
+            else
+            {
+                return 0;
+            }
+            
         }
 
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+            var fact = 1;
+
+            if (number < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            for (int i = number; i > 0; i--)
+            {
+                fact *= i;
+            }
+            return fact;
         }
     }
 }
